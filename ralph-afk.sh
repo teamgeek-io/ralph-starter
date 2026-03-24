@@ -7,14 +7,14 @@ if [ -z "$1" ]; then
 fi
 
 for ((i=1; i<=$1; i++)); do
-  result=$(agent -p --force "@PRD.md @progress.txt \
+  result=$(copilot -p "@PRD.md @progress.txt \
   1. Find the highest-priority task and implement it. \
   2. Run your tests and type checks. \
   3. Update the PRD with what was done. \
   4. Append your progress to progress.txt. \
   5. Commit your changes. \
   ONLY WORK ON A SINGLE TASK. \
-  If the PRD is complete, output <promise>COMPLETE</promise>.")
+  If the PRD is complete, output <promise>COMPLETE</promise>." --yolo)
 
   echo "$result"
 
