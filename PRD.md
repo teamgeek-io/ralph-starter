@@ -80,9 +80,11 @@ CREATE TABLE tournament_participants (
 
 ### Important fix BUGS
 
-- [x] app.js:16 SyntaxError: The requested module '/node_modules/sql.js/dist/sql-wasm-browser.js?v=b2a998a8' does not provide an export named 'default' (at db.ts:1:8) — **Fixed**: replaced static `import initSqlJs from 'sql.js'` with a dynamic `import('sql.js')` that resolves `mod.default ?? mod` to handle the CJS browser bundle correctly.
+- [x] app.js:16 SyntaxError: The requested module '/node_modules/sql.js/dist/sql-wasm-browser.js?v=b2a998a8' does not provide an export named 'default' (at db.ts:1:8) — **Fixed**: root cause was `optimizeDeps.exclude: ['sql.js']` in `vite.config.ts` preventing Vite's CJS→ESM conversion. Removed the exclusion so Vite pre-bundles sql.js via esbuild; reverted db.ts to a clean static `import initSqlJs from 'sql.js'`.
 
 - [x] db.ts:1 Uncaught (in promise) SyntaxError: The requested module '/node_modules/sql.js/dist/sql-wasm-browser.js?v=b2a998a8' does not provide an export named 'default' (at db.ts:1:8) — same root cause, resolved by the fix above.
+
+- [x] db.ts:107 Uncaught (in promise) TypeError: initSqlJs is not a function — **Fixed**: the dynamic-import workaround (`mod.default ?? mod`) resolved to a non-callable namespace object because sql.js was excluded from pre-bundling. Fixed by removing `optimizeDeps.exclude: ['sql.js']` from `vite.config.ts` and restoring the static import.
 
 --
 
@@ -122,15 +124,19 @@ Complete tasks in order. Mark each task done by changing `[ ]` to `[x]`. After a
 
 - [x] **TASK-07**: Build the Quick Match UI at `/match/new`. Step 1: choose 1v1 or 2v2. Step 2: select players (auto-suggest but allow manual override); show ELO and win probability. Step 3: enter scores. Step 4: confirm — run ELO update, save match to DB, show ELO delta toast. Commit as `feat: quick match UI`.
 
-### Phase 5 — League
+### Phase 5 — Landing Page
 
-- [ ] **TASK-08**: Create the League data layer in `src/lib/stores/leagues.svelte.ts`. Expose: `createLeague`, `getLeague`, `getAllLeagues`, `addPlayerToLeague`, `removePlayerFromLeague`, `getLeagueStandings(leagueId)` (returns rows sorted by points, then ELO). Standings row: `{ rank, player, played, won, lost, drawn, points, elo }`. Commit as `feat: league data layer`.
+- [x] **TASK-08**: Build a landing page at `/` (the app root). It should serve as a dashboard/home screen showing: a hero section with the app name and tagline, quick-action buttons (Quick Match, View Players, Leagues, Tournaments), a "Top Players" mini-leaderboard (top 5 by ELO), and a "Recent Matches" feed (last 5 matches with players and scores). Use Tailwind CSS for layout and style. Commit as `feat: landing page`.
 
-- [ ] **TASK-09**: Build League UI. Route `/leagues` lists all leagues (active first). Route `/leagues/new` has a creation form. Route `/leagues/[id]` shows the standings table, member list with add/remove controls, and a match history feed filtered to this league. Commit as `feat: league UI`.
+### Phase 6 — League
 
-### Phase 6 — Tournaments
+- [ ] **TASK-09**: Create the League data layer in `src/lib/stores/leagues.svelte.ts`. Expose: `createLeague`, `getLeague`, `getAllLeagues`, `addPlayerToLeague`, `removePlayerFromLeague`, `getLeagueStandings(leagueId)` (returns rows sorted by points, then ELO). Standings row: `{ rank, player, played, won, lost, drawn, points, elo }`. Commit as `feat: league data layer`.
 
-- [ ] **TASK-10**: Create the Tournament data layer in `src/lib/stores/tournaments.svelte.ts`. Expose:
+- [ ] **TASK-10**: Build League UI. Route `/leagues` lists all leagues (active first). Route `/leagues/new` has a creation form. Route `/leagues/[id]` shows the standings table, member list with add/remove controls, and a match history feed filtered to this league. Commit as `feat: league UI`.
+
+### Phase 7 — Tournaments
+
+- [ ] **TASK-11**: Create the Tournament data layer in `src/lib/stores/tournaments.svelte.ts`. Expose:
   - `createTournament(name, type)`, `registerParticipant`, `startTournament`
   - `generateGroupSchedule(tournamentId)` — round-robin: each participant plays every other once; writes matches with `tournament_round = 'group'`
   - `getGroupStandings(tournamentId)` — points-based (win=3, draw=1, loss=0)
@@ -139,12 +145,12 @@ Complete tasks in order. Mark each task done by changing `[ ]` to `[x]`. After a
   - `getTournamentBracket(tournamentId)` — returns structured bracket for rendering
   Commit as `feat: tournament data layer`.
 
-- [ ] **TASK-11**: Build Tournament UI. Route `/tournaments` lists all tournaments. Route `/tournaments/new` has creation + participant registration. Route `/tournaments/[id]` shows current phase: during group stage shows schedule + live standings; during knockout shows a bracket tree visualisation (SVG or CSS grid); when complete shows winner banner. Commit as `feat: tournament UI`.
+- [ ] **TASK-12**: Build Tournament UI. Route `/tournaments` lists all tournaments. Route `/tournaments/new` has creation + participant registration. Route `/tournaments/[id]` shows current phase: during group stage shows schedule + live standings; during knockout shows a bracket tree visualisation (SVG or CSS grid); when complete shows winner banner. Commit as `feat: tournament UI`.
 
-### Phase 7 — UI Polish
+### Phase 8 — UI Polish
 
-- [ ] **TASK-12**: Add a persistent app shell: top navigation bar with links to Players, Leagues, Tournaments, and Quick Match. Add a dark mode toggle (persisted to localStorage). Ensure all pages are responsive (mobile-first). Add Tailwind `prose` typography and consistent card/button component styles. Commit as `feat: app shell and responsive layout`.
+- [ ] **TASK-13**: Add a persistent app shell: top navigation bar with links to Players, Leagues, Tournaments, and Quick Match. Add a dark mode toggle (persisted to localStorage). Ensure all pages are responsive (mobile-first). Add Tailwind `prose` typography and consistent card/button component styles. Commit as `feat: app shell and responsive layout`.
 
-- [ ] **TASK-13**: Add toast notifications using a Svelte 5 rune-based store. Show toasts for: match recorded (with ELO delta), player created, tournament advanced. Add skeleton loading states for any async DB reads. Add empty-state illustrations/messages for empty leaderboard, no tournaments, etc. Commit as `feat: toasts, skeletons, empty states`.
+- [ ] **TASK-14**: Add toast notifications using a Svelte 5 rune-based store. Show toasts for: match recorded (with ELO delta), player created, tournament advanced. Add skeleton loading states for any async DB reads. Add empty-state illustrations/messages for empty leaderboard, no tournaments, etc. Commit as `feat: toasts, skeletons, empty states`.
 
 

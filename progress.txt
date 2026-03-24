@@ -50,3 +50,12 @@
 - Draws skip ELO update but increment games_played
 - Created src/routes/match/new/+page.ts: prerender=false
 - Type checks: 0 errors, 0 warnings; 26 tests passing
+[TASK-08] feat: landing page
+- Replaced placeholder +page.svelte with a full dashboard home screen
+- Hero section: app name "Foosball HQ", tagline, ⚽ emoji
+- Quick-action buttons: Quick Match (/match/new), Players, Leagues, Tournaments
+- Top 5 Players mini-leaderboard: rank medals, ELO badge, tier label, games played
+- Recent Matches feed: last 5 global matches with player names, scores (color-coded win/loss), match type badge, relative timestamp
+- Added getRecentMatches(limit) helper to players.svelte.ts
+- Empty states for both sections when no data exists
+- Type checks: 0 errors; 26 tests passing
