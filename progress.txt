@@ -59,3 +59,9 @@
 - Added getRecentMatches(limit) helper to players.svelte.ts
 - Empty states for both sections when no data exists
 - Type checks: 0 errors; 26 tests passing
+[TASK-09] feat: league data layer
+- Created src/lib/stores/leagues.svelte.ts using Svelte 5 runes ($state)
+- Exposes: createLeague(name, season?), updateLeague, deleteLeague, getLeague(id), getAllLeagues() (active first, then by date), addPlayerToLeague, removePlayerFromLeague, getLeaguePlayers, getLeagueStandings, loadLeagues
+- Standings row: { rank, player_id, player, played, won, lost, drawn, points, elo } sorted by points desc, then ELO desc
+- Points: win=3, draw=1, loss=0 (standard football rules)
+- Type checks: 0 errors; 26 tests passing
