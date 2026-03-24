@@ -78,6 +78,14 @@ CREATE TABLE tournament_participants (
 
 ---
 
+### Important fix BUGS
+
+- [ ] app.js:16 SyntaxError: The requested module '/node_modules/sql.js/dist/sql-wasm-browser.js?v=b2a998a8' does not provide an export named 'default' (at db.ts:1:8)
+
+- [ ] db.ts:1 Uncaught (in promise) SyntaxError: The requested module '/node_modules/sql.js/dist/sql-wasm-browser.js?v=b2a998a8' does not provide an export named 'default' (at db.ts:1:8)
+
+--
+
 ## Tasks
 
 Complete tasks in order. Mark each task done by changing `[ ]` to `[x]`. After all tasks are done, output `<promise>COMPLETE</promise>`.
@@ -106,7 +114,7 @@ Complete tasks in order. Mark each task done by changing `[ ]` to `[x]`. After a
 
 ### Phase 4 — Matchmaking
 
-- [ ] **TASK-06**: Create `src/lib/matchmaking.ts`. Export:
+- [x] **TASK-06**: Create `src/lib/matchmaking.ts`. Export:
   - `suggestOpponent1v1(playerId, allPlayers)` — returns the player with closest ELO (excluding self)
   - `suggestTeams2v2(allPlayers)` — splits players into two balanced teams minimising |avgElo(team1) - avgElo(team2)|; tries all combinations for ≤8 players, random-samples for larger pools
   - `winProbability(ratingA, ratingB): number` — expected score as a percentage

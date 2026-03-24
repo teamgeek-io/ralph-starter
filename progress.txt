@@ -32,3 +32,10 @@
 - Created src/lib/elo.test.ts with 13 Vitest unit tests (all passing)
 - Installed vitest; added 'test' script to package.json; updated vite.config.ts to use vitest/config defineConfig
 - Type checks: 0 errors, 0 warnings
+[TASK-06] feat: matchmaking engine
+- Created src/lib/matchmaking.ts with MatchmakingPlayer interface
+- suggestOpponent1v1(playerId, allPlayers): returns closest-ELO opponent, excludes self, null-safe
+- suggestTeams2v2(allPlayers): exhaustive search for ≤8 players, 500-sample random for larger pools; returns {team1, team2, eloDiff}
+- winProbability(ratingA, ratingB): delegates to expectedScore(), returns 0–100 integer
+- Created src/lib/matchmaking.test.ts with 13 Vitest unit tests (all passing, 26 total)
+- Type checks: 0 errors, 0 warnings
