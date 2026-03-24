@@ -84,13 +84,13 @@ Complete tasks in order. Mark each task done by changing `[ ]` to `[x]`. After a
 
 ### Phase 1 — Project Scaffold
 
-- [ ] **TASK-01**: Initialise a SvelteKit project with Svelte 5, TypeScript, Tailwind CSS v4, and `@sveltejs/adapter-static`. Configure `svelte.config.js` for SPA mode (`fallback: '404.html'`). Commit as `feat: init sveltekit project`.
+- [x] **TASK-01**: Initialise a SvelteKit project with Svelte 5, TypeScript, Tailwind CSS v4, and `@sveltejs/adapter-static`. Configure `svelte.config.js` for SPA mode (`fallback: '404.html'`). Commit as `feat: init sveltekit project`.
 
 - [x] **TASK-02**: Install and configure `sql.js`. Create `src/lib/db.ts` that initialises the WASM SQLite engine, runs the schema migrations on first load, and exposes `query()`, `run()`, `save()`, and `load()` helpers. Persist the DB with `save()` (serialize → base64 → localStorage key `foosball_db`) and restore with `load()` on app boot. Write a basic smoke test (console assertion). Commit as `feat: add sql.js sqlite persistence`.
 
 ### Phase 2 — Player Management
 
-- [ ] **TASK-03**: Create the Players data layer in `src/lib/stores/players.svelte.ts` using Svelte 5 runes. Expose: `createPlayer(name)`, `updatePlayer(id, name)`, `deletePlayer(id)`, `getPlayer(id)`, `getAllPlayers()` (sorted by ELO desc). Commit as `feat: player data layer`.
+- [x] **TASK-03**: Create the Players data layer in `src/lib/stores/players.svelte.ts` using Svelte 5 runes. Expose: `createPlayer(name)`, `updatePlayer(id, name)`, `deletePlayer(id)`, `getPlayer(id)`, `getAllPlayers()` (sorted by ELO desc). Commit as `feat: player data layer`.
 
 - [ ] **TASK-04**: Build the Players UI. Route `/players` shows the global leaderboard (rank, name, ELO, games played, win rate). Route `/players/new` shows a creation form. Route `/players/[id]` shows a player profile with: ELO badge, win/loss/draw stats, ELO change history chart (last 20 matches), and recent match list. Commit as `feat: player management UI`.
 
