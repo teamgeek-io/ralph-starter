@@ -144,6 +144,26 @@ export function getPlayerEloHistory(id: number): EloPoint[] {
 	).reverse();
 }
 
+export function getRecentMatches(limit = 5): RecentMatchRow[] {
+	return query<RecentMatchRow>(
+		`SELECT m.id, m.type, m.score1, m.score2, m.played_at,
+		        m.player1_id, m.player2_id,
+		        m.team1_p1_id, m.team1_p2_id, m.team2_p1_id, m.team2_p2_id,
+		        p1.name AS p1_name, p2.name AS p2_name,
+		        tp1.name AS t1p1_name, tp2.name AS t1p2_name,
+		        tp3.name AS t2p1_name, tp4.name AS t2p2_name
+		 FROM matches m
+		 LEFT JOIN players p1 ON m.player1_id = p1.id
+		 LEFT JOIN players p2 ON m.player2_id = p2.id
+		 LEFT JOIN players tp1 ON m.team1_p1_id = tp1.id
+		 LEFT JOIN players tp2 ON m.team1_p2_id = tp2.id
+		 LEFT JOIN players tp3 ON m.team2_p1_id = tp3.id
+		 LEFT JOIN players tp4 ON m.team2_p2_id = tp4.id
+		 ORDER BY m.played_at DESC LIMIT ?`,
+		[limit]
+	);
+}
+
 export function getPlayerRecentMatches(id: number): RecentMatchRow[] {
 	return query<RecentMatchRow>(
 		`SELECT m.id, m.type, m.score1, m.score2, m.played_at,
