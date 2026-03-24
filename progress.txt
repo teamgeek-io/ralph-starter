@@ -7,3 +7,12 @@
 - Smoke test: asserts players + matches tables exist, logs all table names
 - vite.config.ts: excludes sql.js from optimizeDeps
 - +layout.svelte: calls initDb() in onMount
+[TASK-01] feat: init sveltekit project (retroactively marked done)
+- Project was already initialised with SvelteKit + Svelte 5 + TypeScript + Tailwind CSS v4 + adapter-static
+- svelte.config.js uses fallback: '404.html' for SPA mode
+
+[TASK-03] feat: player data layer
+- Created src/lib/stores/players.svelte.ts using Svelte 5 runes ($state)
+- Exposes: createPlayer(name), updatePlayer(id, name), deletePlayer(id), getPlayer(id), getAllPlayers() (sorted by ELO desc), loadPlayers()
+- Reactive players list auto-refreshes from DB after every mutation
+- Type checks: 0 errors, 0 warnings
