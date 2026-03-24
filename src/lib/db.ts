@@ -1,4 +1,4 @@
-import type { Database, QueryExecResult, SqlValue } from 'sql.js';
+import initSqlJs, { type Database, type QueryExecResult, type SqlValue } from 'sql.js';
 
 const STORAGE_KEY = 'foosball_db';
 
@@ -98,12 +98,6 @@ function loadFromStorage(): Uint8Array | null {
 
 /** Initialise sql.js, restore persisted DB (or create fresh), run schema migrations. */
 export async function initDb(): Promise<void> {
-	// sql.js browser bundle uses CJS exports; handle both CJS and ESM module shapes
-	// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	const mod = await import('sql.js');
-	// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	const initSqlJs: (config: object) => Promise<{ Database: new (data?: ArrayLike<number>) => Database }> =
-		(mod as any).default ?? mod;
 	const SQL = await initSqlJs({ locateFile: () => '/sql-wasm.wasm' });
 
 	const existing = loadFromStorage();

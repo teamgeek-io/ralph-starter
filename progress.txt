@@ -65,3 +65,14 @@
 - Standings row: { rank, player_id, player, played, won, lost, drawn, points, elo } sorted by points desc, then ELO desc
 - Points: win=3, draw=1, loss=0 (standard football rules)
 - Type checks: 0 errors; 26 tests passing
+[TASK-10] feat: league UI
+- Created src/routes/leagues/+page.svelte: lists all leagues (active badge, season), active-first order, empty state with CTA
+- Created src/routes/leagues/new/+page.svelte: creation form with name + optional season fields, validates and redirects
+- Created src/routes/leagues/[id]/+page.svelte: full detail page with:
+  - Inline edit mode (name, season, active toggle) with save/cancel
+  - Confirm-before-delete flow
+  - Standings table (rank medal, player, P/W/D/L/Pts/ELO) with empty state
+  - Member list with per-row remove button; add-player dropdown filtered to non-members
+  - Match history feed (last 20 league matches) with opponent labels, score, type badge, relative timestamp
+- Created src/routes/leagues/[id]/+page.ts: prerender=false for dynamic route
+- Type checks: 0 errors; 26 tests passing

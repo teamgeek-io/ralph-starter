@@ -7,9 +7,6 @@ export default defineConfig({
 	test: {
 		include: ['src/**/*.test.ts']
 	},
-	optimizeDeps: {
-		exclude: ['sql.js']
-	},
 	server: {
 		fs: {
 			allow: ['..']
