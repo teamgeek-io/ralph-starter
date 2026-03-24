@@ -96,7 +96,7 @@ Complete tasks in order. Mark each task done by changing `[ ]` to `[x]`. After a
 
 ### Phase 3 — ELO Engine
 
-- [ ] **TASK-05**: Implement `src/lib/elo.ts`. Export:
+- [x] **TASK-05**: Implement `src/lib/elo.ts`. Export:
   - `getKFactor(gamesPlayed: number): number` — returns 32 if <10 games, 24 if 10–30, 16 if >30
   - `expectedScore(ratingA: number, ratingB: number): number`
   - `updateElo1v1(winner: {id, elo, games}, loser: {id, elo, games}): {winnerId, newWinnerElo, loserId, newLoserElo}`
@@ -139,8 +139,4 @@ Complete tasks in order. Mark each task done by changing `[ ]` to `[x]`. After a
 
 - [ ] **TASK-13**: Add toast notifications using a Svelte 5 rune-based store. Show toasts for: match recorded (with ELO delta), player created, tournament advanced. Add skeleton loading states for any async DB reads. Add empty-state illustrations/messages for empty leaderboard, no tournaments, etc. Commit as `feat: toasts, skeletons, empty states`.
 
-### BUGS
 
-- [ ] app.js:16 SyntaxError: The requested module '/node_modules/sql.js/dist/sql-wasm-browser.js?v=b2a998a8' does not provide an export named 'default' (at db.ts:1:8)
-
-- [ ] db.ts:1 Uncaught (in promise) SyntaxError: The requested module '/node_modules/sql.js/dist/sql-wasm-browser.js?v=b2a998a8' does not provide an export named 'default' (at db.ts:1:8)

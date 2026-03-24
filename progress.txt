@@ -25,3 +25,10 @@
 - Added whenReady() to db.ts: promise-based DB readiness gate for components
 - Extended players.svelte.ts: LeaderboardRow, PlayerStats, EloPoint, RecentMatchRow interfaces; getLeaderboard(), getPlayerStats(), getPlayerEloHistory(), getPlayerRecentMatches() functions
 - Type checks: 0 errors, 0 warnings
+[TASK-05] feat: elo engine with tests
+- Created src/lib/elo.ts with getKFactor(), expectedScore(), updateElo1v1(), updateElo2v2()
+- K-factor: 32 (<10 games), 24 (10–30 games), 16 (>30 games)
+- 2v2 uses average team ELO; distributes equal delta to both teammates
+- Created src/lib/elo.test.ts with 13 Vitest unit tests (all passing)
+- Installed vitest; added 'test' script to package.json; updated vite.config.ts to use vitest/config defineConfig
+- Type checks: 0 errors, 0 warnings
