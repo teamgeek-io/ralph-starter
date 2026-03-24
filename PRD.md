@@ -86,7 +86,7 @@ Complete tasks in order. Mark each task done by changing `[ ]` to `[x]`. After a
 
 - [ ] **TASK-01**: Initialise a SvelteKit project with Svelte 5, TypeScript, Tailwind CSS v4, and `@sveltejs/adapter-static`. Configure `svelte.config.js` for SPA mode (`fallback: '404.html'`). Commit as `feat: init sveltekit project`.
 
-- [ ] **TASK-02**: Install and configure `sql.js`. Create `src/lib/db.ts` that initialises the WASM SQLite engine, runs the schema migrations on first load, and exposes `query()`, `run()`, `save()`, and `load()` helpers. Persist the DB with `save()` (serialize → base64 → localStorage key `foosball_db`) and restore with `load()` on app boot. Write a basic smoke test (console assertion). Commit as `feat: add sql.js sqlite persistence`.
+- [x] **TASK-02**: Install and configure `sql.js`. Create `src/lib/db.ts` that initialises the WASM SQLite engine, runs the schema migrations on first load, and exposes `query()`, `run()`, `save()`, and `load()` helpers. Persist the DB with `save()` (serialize → base64 → localStorage key `foosball_db`) and restore with `load()` on app boot. Write a basic smoke test (console assertion). Commit as `feat: add sql.js sqlite persistence`.
 
 ### Phase 2 — Player Management
 

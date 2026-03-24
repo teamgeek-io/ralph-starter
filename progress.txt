@@ -1,0 +1,9 @@
+[TASK-02] feat: add sql.js sqlite persistence
+- Installed sql.js + @types/sql.js
+- Copied sql-wasm.wasm to static/ for browser serving
+- Created src/lib/db.ts: initDb(), query(), run(), save(), getDb() helpers
+- Schema runs CREATE TABLE IF NOT EXISTS for all 6 tables on init
+- Persistence: db.export() → base64 → localStorage key 'foosball_db'; restores on boot
+- Smoke test: asserts players + matches tables exist, logs all table names
+- vite.config.ts: excludes sql.js from optimizeDeps
+- +layout.svelte: calls initDb() in onMount
