@@ -92,7 +92,7 @@ Complete tasks in order. Mark each task done by changing `[ ]` to `[x]`. After a
 
 - [x] **TASK-03**: Create the Players data layer in `src/lib/stores/players.svelte.ts` using Svelte 5 runes. Expose: `createPlayer(name)`, `updatePlayer(id, name)`, `deletePlayer(id)`, `getPlayer(id)`, `getAllPlayers()` (sorted by ELO desc). Commit as `feat: player data layer`.
 
-- [ ] **TASK-04**: Build the Players UI. Route `/players` shows the global leaderboard (rank, name, ELO, games played, win rate). Route `/players/new` shows a creation form. Route `/players/[id]` shows a player profile with: ELO badge, win/loss/draw stats, ELO change history chart (last 20 matches), and recent match list. Commit as `feat: player management UI`.
+- [x] **TASK-04**: Build the Players UI. Route `/players` shows the global leaderboard (rank, name, ELO, games played, win rate). Route `/players/new` shows a creation form. Route `/players/[id]` shows a player profile with: ELO badge, win/loss/draw stats, ELO change history chart (last 20 matches), and recent match list. Commit as `feat: player management UI`.
 
 ### Phase 3 — ELO Engine
 
@@ -138,3 +138,9 @@ Complete tasks in order. Mark each task done by changing `[ ]` to `[x]`. After a
 - [ ] **TASK-12**: Add a persistent app shell: top navigation bar with links to Players, Leagues, Tournaments, and Quick Match. Add a dark mode toggle (persisted to localStorage). Ensure all pages are responsive (mobile-first). Add Tailwind `prose` typography and consistent card/button component styles. Commit as `feat: app shell and responsive layout`.
 
 - [ ] **TASK-13**: Add toast notifications using a Svelte 5 rune-based store. Show toasts for: match recorded (with ELO delta), player created, tournament advanced. Add skeleton loading states for any async DB reads. Add empty-state illustrations/messages for empty leaderboard, no tournaments, etc. Commit as `feat: toasts, skeletons, empty states`.
+
+### BUGS
+
+- [ ] app.js:16 SyntaxError: The requested module '/node_modules/sql.js/dist/sql-wasm-browser.js?v=b2a998a8' does not provide an export named 'default' (at db.ts:1:8)
+
+- [ ] db.ts:1 Uncaught (in promise) SyntaxError: The requested module '/node_modules/sql.js/dist/sql-wasm-browser.js?v=b2a998a8' does not provide an export named 'default' (at db.ts:1:8)

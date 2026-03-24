@@ -55,9 +55,28 @@ CREATE TABLE IF NOT EXISTS tournament_participants (
   player2_id INTEGER,
   eliminated INTEGER NOT NULL DEFAULT 0
 );
+
+CREATE TABLE IF NOT EXISTS elo_history (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  player_id INTEGER NOT NULL,
+  elo INTEGER NOT NULL,
+  delta INTEGER NOT NULL DEFAULT 0,
+  match_id INTEGER,
+  recorded_at TEXT NOT NULL DEFAULT (datetime('now'))
+);
 `;
 
 let db: Database | null = null;
+
+let readyResolve!: () => void;
+const readyPromise = new Promise<void>((resolve) => {
+	readyResolve = resolve;
+});
+
+/** Resolves once initDb() has completed successfully. */
+export function whenReady(): Promise<void> {
+	return readyPromise;
+}
 
 /** Serialise DB to base64 and persist to localStorage. */
 export function save(): void {
@@ -93,6 +112,8 @@ export async function initDb(): Promise<void> {
 	console.assert(tables.includes('players'), 'DB smoke test: players table missing');
 	console.assert(tables.includes('matches'), 'DB smoke test: matches table missing');
 	console.log('[db] Initialised. Tables:', tables.join(', '));
+
+	readyResolve();
 }
 
 /** Execute a SELECT query and return rows as plain objects. */

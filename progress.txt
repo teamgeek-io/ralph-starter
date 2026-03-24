@@ -16,3 +16,12 @@
 - Exposes: createPlayer(name), updatePlayer(id, name), deletePlayer(id), getPlayer(id), getAllPlayers() (sorted by ELO desc), loadPlayers()
 - Reactive players list auto-refreshes from DB after every mutation
 - Type checks: 0 errors, 0 warnings
+[TASK-04] feat: player management UI
+- Created src/routes/players/+page.svelte: leaderboard table (rank, name, ELO badge, games, win rate) with empty state
+- Created src/routes/players/new/+page.svelte: player creation form with validation and redirect
+- Created src/routes/players/[id]/+page.svelte: profile with ELO badge (Rookie/Regular/Pro/Elite), win/loss/draw stats, SVG ELO history sparkline chart, recent match list with W/L/D result badges
+- Created src/routes/players/[id]/+page.ts: prerender=false override for dynamic route
+- Added elo_history table to db.ts schema (for future TASK-07 population)
+- Added whenReady() to db.ts: promise-based DB readiness gate for components
+- Extended players.svelte.ts: LeaderboardRow, PlayerStats, EloPoint, RecentMatchRow interfaces; getLeaderboard(), getPlayerStats(), getPlayerEloHistory(), getPlayerRecentMatches() functions
+- Type checks: 0 errors, 0 warnings
