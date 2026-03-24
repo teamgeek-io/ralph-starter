@@ -39,3 +39,14 @@
 - winProbability(ratingA, ratingB): delegates to expectedScore(), returns 0–100 integer
 - Created src/lib/matchmaking.test.ts with 13 Vitest unit tests (all passing, 26 total)
 - Type checks: 0 errors, 0 warnings
+[TASK-07] feat: quick match UI
+- Created src/routes/match/new/+page.svelte: 4-step wizard (type → players → scores → confirm → done)
+- Step 1: Choose 1v1 or 2v2 with styled cards
+- Step 2: Auto-suggest players via suggestOpponent1v1 / suggestTeams2v2; manual override dropdowns; win probability badge; 2v2 auto-balance button; team avg ELO display
+- Step 3: Score entry with draw warning
+- Step 4: Confirm screen with match summary and win probability
+- Done screen: ELO delta cards per player (green +N / red -N / grey ±0 for draws)
+- Saves match to DB, updates player ELOs and games_played, inserts elo_history records
+- Draws skip ELO update but increment games_played
+- Created src/routes/match/new/+page.ts: prerender=false
+- Type checks: 0 errors, 0 warnings; 26 tests passing

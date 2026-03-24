@@ -80,9 +80,9 @@ CREATE TABLE tournament_participants (
 
 ### Important fix BUGS
 
-- [ ] app.js:16 SyntaxError: The requested module '/node_modules/sql.js/dist/sql-wasm-browser.js?v=b2a998a8' does not provide an export named 'default' (at db.ts:1:8)
+- [x] app.js:16 SyntaxError: The requested module '/node_modules/sql.js/dist/sql-wasm-browser.js?v=b2a998a8' does not provide an export named 'default' (at db.ts:1:8) — **Fixed**: replaced static `import initSqlJs from 'sql.js'` with a dynamic `import('sql.js')` that resolves `mod.default ?? mod` to handle the CJS browser bundle correctly.
 
-- [ ] db.ts:1 Uncaught (in promise) SyntaxError: The requested module '/node_modules/sql.js/dist/sql-wasm-browser.js?v=b2a998a8' does not provide an export named 'default' (at db.ts:1:8)
+- [x] db.ts:1 Uncaught (in promise) SyntaxError: The requested module '/node_modules/sql.js/dist/sql-wasm-browser.js?v=b2a998a8' does not provide an export named 'default' (at db.ts:1:8) — same root cause, resolved by the fix above.
 
 --
 
@@ -120,7 +120,7 @@ Complete tasks in order. Mark each task done by changing `[ ]` to `[x]`. After a
   - `winProbability(ratingA, ratingB): number` — expected score as a percentage
   Commit as `feat: matchmaking engine`.
 
-- [ ] **TASK-07**: Build the Quick Match UI at `/match/new`. Step 1: choose 1v1 or 2v2. Step 2: select players (auto-suggest but allow manual override); show ELO and win probability. Step 3: enter scores. Step 4: confirm — run ELO update, save match to DB, show ELO delta toast. Commit as `feat: quick match UI`.
+- [x] **TASK-07**: Build the Quick Match UI at `/match/new`. Step 1: choose 1v1 or 2v2. Step 2: select players (auto-suggest but allow manual override); show ELO and win probability. Step 3: enter scores. Step 4: confirm — run ELO update, save match to DB, show ELO delta toast. Commit as `feat: quick match UI`.
 
 ### Phase 5 — League
 
