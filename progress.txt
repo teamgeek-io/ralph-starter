@@ -84,3 +84,11 @@
 - Active page highlighted with green background/text; aria-current set for accessibility
 - Back button appears on all nested routes (new + [id] routes for players, leagues, tournaments)
 - Type checks: 0 errors; 26 tests passing
+[TASK-11] feat: tournament data layer
+- Created src/lib/stores/tournaments.svelte.ts using Svelte 5 runes ($state)
+- Exposes: createTournament(name, type) → id, registerParticipant, removeParticipant, getParticipants, startTournament, generateGroupSchedule, getGroupStandings, getGroupMatches, generateKnockoutBracket, recordTournamentMatch, getTournamentBracket, loadTournaments
+- Round-robin group schedule: each participant plays every other once; matches use score=-1 as "unplayed" sentinel
+- Group standings: points-based (win=3, draw=1, loss=0), sorted by points then wins then losses
+- Knockout bracket: seeded (1 vs N, 2 vs N-1...), supports topN=2/4/8; stub matches pre-created for later rounds; NEXT_ROUND map drives automatic bracket advancement
+- recordTournamentMatch: saves scores, runs ELO update (updateElo1v1/updateElo2v2), records elo_history, advances bracket, marks losers eliminated, marks tournament complete on F match
+- Type checks: 0 errors, 0 warnings; 26 tests passing

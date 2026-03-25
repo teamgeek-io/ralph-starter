@@ -138,7 +138,7 @@ Complete tasks in order. Mark each task done by changing `[ ]` to `[x]`. After a
 
 ### Phase 7 — Tournaments
 
-- [ ] **TASK-11**: Create the Tournament data layer in `src/lib/stores/tournaments.svelte.ts`. Expose:
+- [x] **TASK-11**: Create the Tournament data layer in `src/lib/stores/tournaments.svelte.ts`. Expose:
   - `createTournament(name, type)`, `registerParticipant`, `startTournament`
   - `generateGroupSchedule(tournamentId)` — round-robin: each participant plays every other once; writes matches with `tournament_round = 'group'`
   - `getGroupStandings(tournamentId)` — points-based (win=3, draw=1, loss=0)
