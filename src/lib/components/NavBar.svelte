@@ -20,13 +20,15 @@
 
 	const currentPath = $derived(page.url.pathname);
 
-	const backLink = $derived<BackConfig | null>(() => {
-		if (backMap[currentPath]) return backMap[currentPath];
-		if (/^\/players\/\d+/.test(currentPath)) return { label: 'Players', href: '/players' };
-		if (/^\/leagues\/\d+/.test(currentPath)) return { label: 'Leagues', href: '/leagues' };
-		if (/^\/tournaments\/\d+/.test(currentPath)) return { label: 'Tournaments', href: '/tournaments' };
-		return null;
-	})();
+	const backLink = $derived(
+		(() => {
+			if (backMap[currentPath]) return backMap[currentPath];
+			if (/^\/players\/\d+/.test(currentPath)) return { label: 'Players', href: '/players' };
+			if (/^\/leagues\/\d+/.test(currentPath)) return { label: 'Leagues', href: '/leagues' };
+			if (/^\/tournaments\/\d+/.test(currentPath)) return { label: 'Tournaments', href: '/tournaments' };
+			return null;
+		})()
+	);
 
 	function isActive(href: string): boolean {
 		if (href === '/') return currentPath === '/';

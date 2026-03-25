@@ -132,7 +132,7 @@ Complete tasks in order. Mark each task done by changing `[ ]` to `[x]`. After a
 
 - [x] **TASK-09**: Create the League data layer in `src/lib/stores/leagues.svelte.ts`. Expose: `createLeague`, `getLeague`, `getAllLeagues`, `addPlayerToLeague`, `removePlayerFromLeague`, `getLeagueStandings(leagueId)` (returns rows sorted by points, then ELO). Standings row: `{ rank, player, played, won, lost, drawn, points, elo }`. Commit as `feat: league data layer`.
 
-- [ ] **TASK-10-NAV**: Add a persistent navigation shell so users can move between all sections of the app. Users currently cannot navigate back or between pages. Create a top navigation bar component with links to: Home (`/`), Players (`/players`), Quick Match (`/match/new`), Leagues (`/leagues`), and Tournaments (`/tournaments`). Include a back-button or breadcrumb on nested routes (e.g. `/players/[id]`, `/leagues/[id]`, `/tournaments/[id]`). Mount the nav in `+layout.svelte` so it appears on every page. Commit as `feat: app navigation shell`.
+- [x] **TASK-10-NAV**: Add a persistent navigation shell so users can move between all sections of the app.
 
 - [x] **TASK-10**: Build League UI. Route `/leagues` lists all leagues (active first). Route `/leagues/new` has a creation form. Route `/leagues/[id]` shows the standings table, member list with add/remove controls, and a match history feed filtered to this league. Commit as `feat: league UI`.
 
