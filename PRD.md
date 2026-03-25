@@ -147,7 +147,7 @@ Complete tasks in order. Mark each task done by changing `[ ]` to `[x]`. After a
   - `getTournamentBracket(tournamentId)` — returns structured bracket for rendering
   Commit as `feat: tournament data layer`.
 
-- [ ] **TASK-12**: Build Tournament UI. Route `/tournaments` lists all tournaments. Route `/tournaments/new` has creation + participant registration. Route `/tournaments/[id]` shows current phase: during group stage shows schedule + live standings; during knockout shows a bracket tree visualisation (SVG or CSS grid); when complete shows winner banner. Commit as `feat: tournament UI`.
+- [x] **TASK-12**: Build Tournament UI. Route `/tournaments` lists all tournaments. Route `/tournaments/new` has creation + participant registration. Route `/tournaments/[id]` shows current phase: during group stage shows schedule + live standings; during knockout shows a bracket tree visualisation (SVG or CSS grid); when complete shows winner banner. Commit as `feat: tournament UI`.
 
 ### Phase 8 — UI Polish
 

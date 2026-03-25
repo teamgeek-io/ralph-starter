@@ -92,3 +92,13 @@
 - Knockout bracket: seeded (1 vs N, 2 vs N-1...), supports topN=2/4/8; stub matches pre-created for later rounds; NEXT_ROUND map drives automatic bracket advancement
 - recordTournamentMatch: saves scores, runs ELO update (updateElo1v1/updateElo2v2), records elo_history, advances bracket, marks losers eliminated, marks tournament complete on F match
 - Type checks: 0 errors, 0 warnings; 26 tests passing
+[TASK-12] feat: tournament UI
+- Created src/routes/tournaments/+page.svelte: lists all tournaments with status badges (Registration/Group Stage/Knockout/Complete), type badge, participant count, empty state with CTA
+- Created src/routes/tournaments/new/+page.svelte: creation form with name + type (1v1/2v2) selection, validates and redirects to tournament detail
+- Created src/routes/tournaments/[id]/+page.svelte: full phase-aware detail page:
+  - Registration: participant list with add/remove controls (1v1 single dropdown, 2v2 pair selectors), start tournament button (requires ≥2 participants)
+  - Group Stage: live standings table (Rank/Team/P/W/D/L/Pts), full match schedule with inline score entry and Record buttons, advance-to-knockout button (enabled when all matches played)
+  - Knockout: bracket visualisation grouped by round (QF1-4/SF1-2/F) with inline score entry for playable matches, TBD labels for waiting matches
+  - Complete: winner banner (gradient yellow→orange with trophy emoji) + final bracket
+- Created src/routes/tournaments/[id]/+page.ts and /new/+page.ts: prerender=false for dynamic routes
+- Type checks: 0 errors; 26 tests passing
