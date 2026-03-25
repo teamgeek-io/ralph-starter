@@ -76,3 +76,11 @@
   - Match history feed (last 20 league matches) with opponent labels, score, type badge, relative timestamp
 - Created src/routes/leagues/[id]/+page.ts: prerender=false for dynamic route
 - Type checks: 0 errors; 26 tests passing
+[TASK-10-NAV] feat: app navigation shell
+- Fixed $derived IIFE syntax bug in existing NavBar.svelte component
+- Mounted NavBar in +layout.svelte so it renders on every page
+- Wrapped all page content in a centered max-w-5xl main container
+- NavBar: sticky top bar with icon+label links to Home, Players, Quick Match, Leagues, Tournaments
+- Active page highlighted with green background/text; aria-current set for accessibility
+- Back button appears on all nested routes (new + [id] routes for players, leagues, tournaments)
+- Type checks: 0 errors; 26 tests passing
