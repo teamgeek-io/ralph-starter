@@ -102,3 +102,11 @@
   - Complete: winner banner (gradient yellow→orange with trophy emoji) + final bracket
 - Created src/routes/tournaments/[id]/+page.ts and /new/+page.ts: prerender=false for dynamic routes
 - Type checks: 0 errors; 26 tests passing
+[TASK-13] feat: app shell and responsive layout
+- Added class-based dark mode via @custom-variant dark in layout.css (Tailwind v4 syntax)
+- Added anti-flash inline script in app.html: applies .dark class before first paint using localStorage + system preference
+- Updated +layout.svelte: $state darkMode, $effect toggles .dark on <html> + persists to localStorage, reads system preference as fallback
+- Updated NavBar.svelte: accepts darkMode/toggleDark props, added sun/moon toggle button, added dark: variants to all nav styles
+- Created src/lib/components/Card.svelte: reusable card with dark mode support (bg-white/dark:bg-gray-800, border, shadow)
+- Created src/lib/components/Button.svelte: reusable button with variant (primary/secondary/danger/ghost), size (sm/md/lg), href support for anchor-as-button, full dark mode support
+- Type checks: 0 errors, 0 warnings; 26 tests passing

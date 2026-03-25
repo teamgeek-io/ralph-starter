@@ -151,7 +151,7 @@ Complete tasks in order. Mark each task done by changing `[ ]` to `[x]`. After a
 
 ### Phase 8 — UI Polish
 
-- [ ] **TASK-13**: Add a persistent app shell: top navigation bar with links to Players, Leagues, Tournaments, and Quick Match. Add a dark mode toggle (persisted to localStorage). Ensure all pages are responsive (mobile-first). Add Tailwind `prose` typography and consistent card/button component styles. Commit as `feat: app shell and responsive layout`.
+- [x] **TASK-13**: Add a persistent app shell: top navigation bar with links to Players, Leagues, Tournaments, and Quick Match. Add a dark mode toggle (persisted to localStorage). Ensure all pages are responsive (mobile-first). Add Tailwind `prose` typography and consistent card/button component styles. Commit as `feat: app shell and responsive layout`.
 
 - [ ] **TASK-14**: Add toast notifications using a Svelte 5 rune-based store. Show toasts for: match recorded (with ELO delta), player created, tournament advanced. Add skeleton loading states for any async DB reads. Add empty-state illustrations/messages for empty leaderboard, no tournaments, etc. Commit as `feat: toasts, skeletons, empty states`.
 
